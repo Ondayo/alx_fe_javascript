@@ -52,6 +52,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    async function syncQuotes() {
+        console.log("Syncing quotes...");
+        await fetchQuotesFromServer();
+
+        for (const quote of quotes) {
+            await addQuoteToServer(quote);
+        }
+
+        console.log("Sync complete.");
+    }
+
     function showRandomQuote() {
         let filteredQuotes = getFilteredQuotes();
         if (filteredQuotes.length === 0) {
@@ -187,5 +198,5 @@ document.addEventListener("DOMContentLoaded", function () {
         showRandomQuote();
     }
 
-    setInterval(fetchQuotesFromServer, 10000); // Sync with server every 10 seconds
+    setInterval(syncQuotes, 10000); // Sync every 10 seconds
 });
