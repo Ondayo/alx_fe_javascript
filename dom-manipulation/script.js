@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("quotes", JSON.stringify(quotes));
     }
 
-    async function fetchServerQuotes() {
+    async function fetchQuotesFromServer() {
         try {
             const response = await fetch("https://jsonplaceholder.typicode.com/posts");
             const data = await response.json();
@@ -187,5 +187,5 @@ document.addEventListener("DOMContentLoaded", function () {
         showRandomQuote();
     }
 
-    setInterval(fetchServerQuotes, 10000); // Sync with server every 10 seconds
+    setInterval(fetchQuotesFromServer, 10000); // Sync with server every 10 seconds
 });
